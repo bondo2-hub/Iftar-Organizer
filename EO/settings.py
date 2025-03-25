@@ -25,10 +25,8 @@ SECRET_KEY = 'django-insecure-#s1+1o=jzm9ron56-#43#a^%e2xcu9=4*bi@osor4%+7hl639i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -72,15 +70,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'EO.wsgi.application'
 
+import dj_database_url
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='your_render_database_url',
+        conn_max_age=600
+    )
 }
 
 
