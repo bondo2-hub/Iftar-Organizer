@@ -1,0 +1,199 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="main-section">
+    <div class="text-section">
+        {% if request.user.is_authenticated %}
+        <h1 id="ahlan">AHLAN, {{ user.username }} <a class="logout" href="{% url 'logout' %}">Logout</a></h1>
+        {% else %}
+        <a>Login</a>
+        {% endif %}
+        <h1><span id="ramadan">RAMADAN</span><br><span id="kareem">KAREEM</span></h1>
+        <p>With the Ramadan Iftar Organizer app, you can effortlessly plan an Iftar gathering that brings together family and friends, set schedules, coordinate invitations, and spend more time enjoying the blessed moments of the holy month rather than worrying about the details of organization.</p>
+        <a class="organize" href="{% url 'organize' %}" class="btn">Organize Iftar <i class='bx bx-right-arrow-alt'></i></a>
+    </div>
+
+    <div class="intro-image-section">
+        <img src="https://i.postimg.cc/mk7Q2mzw/hand-drawn-flat-design-salat-illustration.png" alt="Ramadan Iftar">
+    </div>
+</div>
+<script>
+    const words = ["KAREEM", "BLESSINGS", "TOGETHER", "MOMENTS"];
+    let currentIndex = 0;
+
+    const kareem = document.getElementById("kareem");
+
+    function changeWord() {
+
+        kareem.style.transition = "transform 0.8s ease, opacity 0.8s ease";
+        kareem.style.transform = "translateY(-20px)";
+        kareem.style.opacity = "0";
+
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % words.length;
+            kareem.textContent = words[currentIndex];
+
+            kareem.style.transform = "translateY(20px)";
+            kareem.style.opacity = "0";
+
+            setTimeout(() => {
+                kareem.style.transform = "translateY(0)";
+                kareem.style.opacity = "1";
+            }, 100);
+        }, 800);
+    }
+
+    setInterval(changeWord, 5000);
+
+</script>
+<style>
+
+.main-section {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+}
+
+.text-section {
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text-section h1 {
+    font-family: 'Montserrat';
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.text-section h1 #ramadan {
+    font-weight: 600;
+    font-size: 100px;
+}
+
+.text-section h1 #kareem {
+    font-weight: 400;
+    font-size: 50px;
+}
+
+.text-section #ahlan {
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.text-section p {
+    color: #E0E0E0;
+    max-width: 400px;
+    max-height: 230px;
+    font-size: 14px;
+}
+
+.text-section .organize {
+    border: 1.5px solid white;
+    width: 250px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 40px;
+    padding: 0px 12px;
+    font-size: 14px;
+    margin-top: 15px;
+    transition: 0.2s ease;
+    font-weight: 400;
+}
+
+.text-section .organize i {
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 4px;
+    background-color: white;
+    color: black;
+}
+
+.text-section .organize:hover {
+    background-color: #ffffff;
+    color: #0D2B4F;
+}
+
+.text-section .organize:hover i {
+    background-color: #0D2B4F;
+    color: white;
+}
+
+.intro-image-section img {
+    width: 550px;
+    height: auto;
+}
+
+.logout {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    border: 1.5px solid white;
+    padding: 5px 30px;
+    border-radius: 50px;
+    font-size: 12px;
+
+}
+
+@media (max-width: 768px) {
+    .main-section {
+        flex-direction: column;
+    }
+
+    .text-section {
+        margin-left: 20px;
+    }
+
+    .intro-image-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .intro-image-section img {
+        width: 400px;
+        height: auto;
+    }
+
+    .text-section h1 #ramadan {
+        font-weight: 600;
+        font-size: 60px;
+    }
+    
+    .text-section h1 #kareem {
+        font-weight: 400;
+        font-size: 30px;
+    }
+
+    .header {
+        padding: 20px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo-section img {
+        width: 80px;
+    }
+    
+    .links-section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .links-section a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+}
+</style>
+
+{% endblock %}

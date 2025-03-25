@@ -1,0 +1,111 @@
+<div class="header">
+  <div class="logo-section">
+    <a href="{% url 'home' %}"
+      ><img
+        src="https://i.postimg.cc/qBNDdrmJ/IFTAR-removebg-preview.png"
+        alt="Iftar Organizer Logo"
+    /></a>
+  </div>
+  <div class="links-section">
+    <a href="#"><i class="bx bx-user"></i></a>
+    <a href="{% url 'notifications' %}"><i class="bx bx-bell"></i></a>
+  </div>
+</div>
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<style>
+  body {
+    font-family: "Montserrat", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    background: linear-gradient(#0d2b4f, #091f3a);
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+  .header {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .logo-section img {
+    width: 150px;
+  }
+
+  .links-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .links-section a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+
+  .links-section a:hover {
+    color: #59a1fa;
+  }
+
+  .messages {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.new-item {
+    background-color: var(--color3);
+    color: var(--color1);
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.alert {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+.alert i {
+    margin-right: 10px;
+}
+
+.alert-success {
+    color: #155724; /* Dark green */
+    background-color: #d4edda; /* Light green */
+    border: 1px solid #c3e6cb; /* Border color */
+}
+
+.alert-error {
+    color: #721c24; /* Dark red */
+    background-color: #f8d7da; /* Light red */
+    border: 1px solid #f5c6cb; /* Border color */
+}
+
+.alert-warning {
+    color: #856404; /* Dark yellow */
+    background-color: #fff3cd; /* Light yellow */
+    border: 1px solid #ffeeba; /* Border color */
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+}
+</style>

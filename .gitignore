@@ -1,0 +1,14 @@
+# Python
+*.pyc
+__pycache__/
+
+# Environment Variables
+.env
+
+# Django
+/db.sqlite3
+/media/
+
+# OS-generated files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,176 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="notif-holder">
+    <div class="text-section2">
+        <h1><span id="ramadan">NOTIFICATION</span><br><span id="kareem">CENTER</span></h1>
+        <div class="line"></div>
+    </div>
+
+    <div class="notifications">
+        {% if notifications %}
+        {% for notification in notifications %}
+        <div class="notification-card">
+            <h1><span class="invi">INVITATION FROM</span><br><span class="sender-name">{{ notification.host.username }}</span></h1>
+            <p>{{ notification.message }}</p>
+            {% if not notification.is_read %}
+            <span style="color: red;">(New)</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p style="font-size: 20px; color: white;">No notifications available.</p>
+    {% endif %}
+</div>
+
+<style>
+    .text-section2 {
+        color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    .text-section2 h1 {
+        font-family: 'Montserrat';
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    #ramadan {
+        font-weight: 600;
+        font-size: 100px;
+        background-color: white;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    #kareem {
+        font-weight: 400;
+        font-size: 50px;
+        color: #E0E0E0;
+    }
+
+    .text-section2 p {
+        color: #E0E0E0;
+        max-width: 400px;
+        max-height: 230px;
+        font-size: 14px;
+    }
+
+    .line {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: 50%;
+        margin-top: 20px;
+    }
+
+    .notifications {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .notification-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 25px;
+        margin: 15px auto;
+        width: 60%;
+        color: #E0E0E0;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .notification-card h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .notification-card .invi {
+        font-size: 18px;
+        font-weight: 400;
+        display: block;
+        margin-bottom: -20px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .notification-card .sender-name {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 45px;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(#000000, #0c315e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .notification-card p {
+        margin: 10px 0;
+        font-size: 16px;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .notification-card .date-section {
+        margin-top: 15px;
+        font-size: 16px;
+        padding: 10px;
+        background: rgba(13, 43, 79, 0.8);
+        border-radius: 8px;
+        color: #ffffff;
+        font-weight: 500;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    /* Decline Button */
+    .decline-btn {
+        background: linear-gradient(#ff0000, #af2929);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .decline-btn:hover {
+        box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Accept Button */
+    .accept-btn {
+        background: linear-gradient(#7fff4c, #29a83a);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .accept-btn:hover {
+        box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+{% endblock %}
