@@ -108,4 +108,59 @@
     background-color: #d1ecf1;
     border: 1px solid #bee5eb;
 }
+
+@media (max-width: 768px) {
+    .main-section {
+        flex-direction: column;
+    }
+
+    .text-section {
+        margin-left: 20px;
+    }
+
+    .intro-image-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .intro-image-section img {
+        width: 400px;
+        height: auto;
+    }
+
+    .text-section h1 #ramadan {
+        font-weight: 600;
+        font-size: 60px;
+    }
+    
+    .text-section h1 #kareem {
+        font-weight: 400;
+        font-size: 30px;
+    }
+
+    .header {
+        padding: 20px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo-section img {
+        width: 80px;
+    }
+    
+    .links-section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .links-section a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+}
 </style>
