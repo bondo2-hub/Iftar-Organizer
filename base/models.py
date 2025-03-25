@@ -133,4 +133,3 @@ def notify_participants_m2m(sender, instance, action, pk_set, **kwargs):
                 host=instance.host,
                 is_read=False
             )
-
