@@ -1,1 +1,1 @@
-web: gunicorn EO.wsgi --log-file -
+web: gunicorn EO.wsgi
